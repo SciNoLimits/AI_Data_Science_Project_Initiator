@@ -62,8 +62,8 @@ For more customization, ```dir_struct``` dict can be modified as required in [in
 
 *Note: The ```dir_struct``` has naming conventions in order to seprate directories and files.*
 
-- The Keys or Value strating with ```d-``` represents a directory.
-- The Keys or Value strating with ```f-``` represents a directory.
+- The Keys or Value starting with ```d-``` represents a directory.
+- The Keys or Value starting with ```f-``` represents a files.
 
 ```python
     dir_struct= {
@@ -122,7 +122,7 @@ Would you like to open your project in VS code YES/NO >>> Y
 <br><br>
 <center><img src="images/open_in_vscode.png" width="80%"></center>
 
-<br><br><br>
+<br><br>
 
 <div style='text-align: right;'>
     <sub>This directory structure used in this repo was inspired from 
