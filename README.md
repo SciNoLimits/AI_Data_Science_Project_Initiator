@@ -93,7 +93,7 @@ Make sure you have the following requirements met:
     - If you choose "YES" (or "Y"), the script will open the project directory in VS Code if it is installed in the system.
     - If you choose "NO" (or "N"), the script will exit.
 
-
+    <br>
     <center><img src="images/open_in_vscode.png" width="80%"></center>
 
 7. You can now start working on your project within the created directory structure.
