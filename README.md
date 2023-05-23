@@ -1,7 +1,7 @@
 # AI / Data Science Project Initiator
 
-
-This repo helps to create template for AI / Data Science project.
+This Python script creates a predefined directory structure for a AI / Data Science project. 
+It sets up directories and files based on a dictionary representation of the desired structure.
 
 
 
@@ -56,60 +56,97 @@ This repo helps to create template for AI / Data Science project.
 ```
 <br>
 
-For more customization, ```dir_struct``` dict can be modified as required in [initiate.py](initiate.py) file.
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following requirements met:
+
+- Python 3.x installed
+- `colorama` module installed (`pip install colorama`)
+
+
+### Usage
+
+1. Clone the repository or download the script [initiate.py](initiate.py) to your local machine.
+
+2. Open a terminal or command prompt and navigate to the directory where the script is located.
+
+3. Run the script by executing the following command:
+
+    ```shell
+    python initiate.py
+    ```
+
+4. When prompted, enter the name of your project. This will be used as the root directory name.
+
+    ```shell
+    Your Project Name >>> my_project
+    ```
+
+5. The script will create the project directory structure based on the predefined dictionary. You will see the progress of file and directory creation in the terminal.
+
+    <center><img src="images/project_initiator.png" width="50%"></center>
+
+6. After the structure is created, you will be prompted to open the project in VS Code.
+
+    - If you choose "YES" (or "Y"), the script will open the project directory in VS Code if it is installed in the system.
+    - If you choose "NO" (or "N"), the script will exit.
+
+
+    <center><img src="images/open_in_vscode.png" width="80%"></center>
+
+7. You can now start working on your project within the created directory structure.
+
+
+## Customizing the Directory Structure
+
+The directory structure is defined in the `dir_struct` dictionary in the script. You can modify this dictionary to match your desired project structure.
+
+Each key in the dictionary represents a directory or file. Directories are prefixed with `"d-"` and files are prefixed with `"f-"`. The nested structure is represented using nested dictionaries.
+
+For example, the following entry in the dictionary:
+
+<!-- For more customization, ```dir_struct``` dict can be modified as required in [initiate.py](initiate.py) file.
 
 
 
 *Note: The ```dir_struct``` has naming conventions in order to seprate directories and files.*
 
 - The Keys or Value starting with ```d-``` represents a directory.
-- The Keys or Value starting with ```f-``` represents a files.
+- The Keys or Value starting with ```f-``` represents a files. -->
 
 ```python
-    dir_struct= {
-    f"d-{DIR}": {
-        "f-LICENSE": {},
-        "f-Makefile": {},
-        "f-README.md": {},
-        "d-data": {
-            "d-external": {}, 
-            "d-interm": {}, 
-            "d-processed": {}, 
-            "d-raw": {}
-            },
-        "d-docs": {},
-        "d-models": {},
-        "d-notebooks": {},
-        "d-references": {},
-        "d-reports": {"d-figures": {}},
-        "f-requirements.txt": {},
-        "f-setup.py": {},
-        "d-src": {
-            "f-__init__.py": {},
-            "d-data": {"f-make_dataset.py": {}},
-            "d-features": {"f-build_features.py": {}},
-            "d-models": {
-                "f-predict_model.py": {}, 
-                "f-train_model.py": {}
-                },
-            "d-visualization": {"f-visualize.py": {}},
-        },
-        "f-tox.ini": {},
-    }
-}
+    "d-src": {
+    "f-__init__.py": {},
+    "d-data": {"f-make_dataset.py": {}},
+    "d-features": {"f-build_features.py": {}},
+    "d-models": {"f-predict_model.py": {}, "f-train_model.py": {}},
+    "d-visualization": {"f-visualize.py": {}},
+},
 ```
 
+will create the following structure:
 
-## Creating a Project
+```markdown
+- src
+    - __init__.py
+    - data
+        - make_dataset.py
+    - features
+        - build_features.py
+```
+
+<!-- ## Creating a Project
 
 Clone this repo or download it, if required modify the directory structure in [initiate.py](initiate.py) file as suggested above.
 
-```
+```shell
 python initiate.py
 ```
 Provide your project name
 
-```
+```shell
 Your Project Name >>> my_project
 ```
 If VS Code is installed and you would like to open your project in it then type Y for yes or N for no.
@@ -122,10 +159,10 @@ Would you like to open your project in VS code YES/NO >>> Y
 <br><br>
 <center><img src="images/open_in_vscode.png" width="80%"></center>
 
-<br><br>
+<br><br> -->
 
 <div style='text-align: right;'>
-    <sub>This directory structure used in this repo was inspired from 
-    <a href="https://drivendata.github.io/cookiecutter-data-science/"> Cookiecutter Data Science</a>.</sup>
+    <sub>The directory structure used in this repo was inspired from 
+    <a href="https://drivendata.github.io/cookiecutter-data-science/"> Cookiecutter Data Science</a>. However it can be modified as desired.</sup>
 </div>
 
