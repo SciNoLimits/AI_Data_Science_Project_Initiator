@@ -1,5 +1,40 @@
 """
+This script generates a project directory structure based on the `dir_struct` dictionary. 
+It creates directories and files recursively according to the specified structure. 
+After creating the project structure, it provides an option to open the project in Visual Studio Code.
+
+The directory structure is defined using a nested dictionary `dir_struct`. 
+Each key represents either a directory or a file, prefixed with "d-" or "f-" respectively. 
+The script traverses the dictionary recursively and creates directories and files accordingly.
+
+The script also uses the `colorama` library to display colored output in the console.
+
+Functions:
+- show_progress(path: str, file_name: str, level: int = 0, log_type: str = "INFO") -> None:
+    Displays the progress of file creation with colored output.
+
+- show_error(path: str, file_name: str, level: int = 0, log_type: str = "INFO") -> None:
+    Displays an error message for file creation with colored output.
+
+- create_dir(path: str, level: int = 1) -> None:
+    Creates a directory at the specified path and displays the progress or error message.
+
+- create_file(path: str, level: int = 1) -> None:
+    Creates a file at the specified path and displays the progress or error message.
+
+- create_project(dic: dict) -> None:
+    Creates a project directory structure based on the provided dictionary.
+
+- open_in_vscode() -> None:
+    Opens the generated project in Visual Studio Code using the `code` command.
+
+- main() -> None:
+    The main function that orchestrates the project creation process. 
+    It calls the `create_project` function and prompts the user to open the project in Visual Studio Code.
+
+Note: This code assumes that the `colorama` library is installed in the Python environment.
 """
+
 
 import os
 import sys
@@ -34,7 +69,18 @@ dir_struct = {
 def show_progress(
     path: str, file_name: str, level: int = 0, log_type: str = "INFO"
 ) -> None:
-    """Shows progress of files creation"""
+    """
+    Displays the progress of file creation with colored output.
+
+    Args:
+        path (str): The path of the file or directory.
+        file_name (str): The name of the file or directory.
+        level (int, optional): The level of nesting in the directory structure. Defaults to 0.
+        log_type (str, optional): The type of log to display. Can be "INFO" or "DEBUG". Defaults to "INFO".
+        
+    Returns:
+        None
+    """
     pattern = (
         Fore.LIGHTYELLOW_EX
         + Style.BRIGHT
@@ -54,7 +100,18 @@ def show_progress(
 def show_error(
     path: str, file_name: str, level: int = 0, log_type: str = "INFO"
 ) -> None:
-    """Shows progress of files creation"""
+    """
+    Displays an error message indicating that a file or directory already exists.
+
+    Args:
+        path (str): The path of the file or directory that already exists.
+        file_name (str): The name of the file or directory.
+        level (int, optional): The level of indentation in the directory structure. Defaults to 0.
+        log_type (str, optional): The type of log message. Can be "INFO" or "DEBUG". Defaults to "INFO".
+
+    Returns:
+        None
+    """
     pattern = (
         Fore.LIGHTYELLOW_EX
         + Style.BRIGHT
@@ -76,11 +133,15 @@ def show_error(
 
 
 def create_dir(path: str, level: int = 1) -> None:
-    """_summary_
+    """
+    Creates a directory at the specified path and displays the progress of the directory creation.
 
     Args:
-        path (str): _description_
-        dirctorys (list[str]): _description_
+        path (str): The path of the directory to create.
+        level (int, optional): The level of indentation in the directory structure. Defaults to 1.
+
+    Returns:
+        None
     """
     file_name = path.split("/")
     file_name = file_name[path.count("/")]
@@ -95,11 +156,15 @@ def create_dir(path: str, level: int = 1) -> None:
 
 
 def create_file(path: str, level: int = 1) -> None:
-    """_summary_
+    """
+    Creates a file at the specified path and displays the progress.
 
     Args:
-        path (str): _description_
-        dirctorys (list[str]): _description_
+        path (str): The path of the file to be created.
+        level (int, optional): The level of indentation in the directory structure. Defaults to 1.
+
+    Returns:
+        None
     """
     file_name = path.split("/")
     file_name = file_name[path.count("/")]
@@ -114,13 +179,27 @@ def create_file(path: str, level: int = 1) -> None:
 
 
 def create_project(dic: dict) -> None:
-    """creates project according to dictionary passed.
+    """
+    Creates a project directory structure based on a dictionary representation.
 
     Args:
-        dic : _description_
-    """
+        dic (dict): The dictionary representing the directory structure. Each key in the dictionary corresponds to a directory or file.
+                    Directories are prefixed with "d-" and files are prefixed with "f-". The nested structure is represented using nested dictionaries.
 
+    Returns:
+        None
+    """
     def one_directory(dic: dict, path: str) -> None:
+        """
+        Recursively creates directories and files based on the dictionary structure.
+
+        Args:
+            dic (dict): The dictionary representing the directory structure.
+            path (str): The current path in the directory structure.
+
+        Returns:
+            None
+        """
         for dict_name, info in dic.items():
             file_name = dict_name
 
@@ -143,18 +222,36 @@ def create_project(dic: dict) -> None:
                 one_directory(info, next_path)
 
     one_directory(dic, ".")
+    return None
 
 
-def open_in_vscode():
-    """_summary_"""
+def open_in_vscode()-> None:
+    """
+    Opens the project directory in Visual Studio Code.
+
+    This function executes the 'code' command to open the project directory in Visual Studio Code. 
+    It uses the value of the 'DIR' variable to determine the directory path.
+
+    Args:
+        None
+
+    Returns:
+        None
+    """
     command_string = f"code {DIR}"
     print(f"Running Command >>> {command_string}")
     os.system(command_string)
-    # sys.exit()
+    return None
 
 
 def main() -> None:
-    """_summary_"""
+    """
+    Entry point of the script.
+    Prompts the user to create a project directory structure and offers an option to open the project in VS Code.
+
+    Returns:
+        None
+    """
     create_project(dir_struct)
     invscode = str(
         input(
@@ -177,6 +274,8 @@ def main() -> None:
 
     if invscode.upper() in {"NO", "N"}:
         sys.exit()
+        
+    return None
 
 
 if __name__ == "__main__":
